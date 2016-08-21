@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6c29bee0b5dd45a3ace036d1636a756d" Name="Diagram1">
+        <EntityTypeShape EntityType="SportScotlandDevModel.Benificiary" Width="1.5" PointX="11.572177218074062" PointY="16.554295085628656" />
+        <EntityTypeShape EntityType="SportScotlandDevModel.Impact" Width="1.5" PointX="10.672434282802247" PointY="17.656959333297312" />
+        <EntityTypeShape EntityType="SportScotlandDevModel.ImpactRecord" Width="1.5" PointX="9.728959561199396" PointY="31.038059547095589" />
+        <EntityTypeShape EntityType="SportScotlandDevModel.ImpactRecordBenificiary" Width="1.5" PointX="6.42837970630656" PointY="31.389353662444908" />
+        <AssociationConnector Association="SportScotlandDevModel.FK__ImpactRec__Benif__09DE7BCC" />
+        <AssociationConnector Association="SportScotlandDevModel.fk_Impact_ImpactId" />
+        <AssociationConnector Association="SportScotlandDevModel.FK__ImpactRec__Impac__0AD2A005" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

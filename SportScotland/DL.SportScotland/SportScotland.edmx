@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SportScotlandDevModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SportScotlandDevModelStoreContainer">
+          <EntitySet Name="Benificiary" EntityType="SportScotlandDevModel.Store.Benificiary" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Impact" EntityType="SportScotlandDevModel.Store.Impact" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ImpactRecord" EntityType="SportScotlandDevModel.Store.ImpactRecord" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ImpactRecordBenificiaries" EntityType="SportScotlandDevModel.Store.ImpactRecordBenificiaries" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__ImpactRec__Benif__09DE7BCC" Association="SportScotlandDevModel.Store.FK__ImpactRec__Benif__09DE7BCC">
+            <End Role="Benificiary" EntitySet="Benificiary" />
+            <End Role="ImpactRecordBenificiaries" EntitySet="ImpactRecordBenificiaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ImpactRec__Impac__0AD2A005" Association="SportScotlandDevModel.Store.FK__ImpactRec__Impac__0AD2A005">
+            <End Role="ImpactRecord" EntitySet="ImpactRecord" />
+            <End Role="ImpactRecordBenificiaries" EntitySet="ImpactRecordBenificiaries" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Impact_ImpactId" Association="SportScotlandDevModel.Store.fk_Impact_ImpactId">
+            <End Role="Impact" EntitySet="Impact" />
+            <End Role="ImpactRecord" EntitySet="ImpactRecord" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Benificiary">
+          <Key>
+            <PropertyRef Name="BenificiaryId" />
+          </Key>
+          <Property Name="BenificiaryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BenificiaryDescription" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Impact">
+          <Key>
+            <PropertyRef Name="ImpactId" />
+          </Key>
+          <Property Name="ImpactId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImpactName" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ImpactRecord">
+          <Key>
+            <PropertyRef Name="ImpactRecordId" />
+          </Key>
+          <Property Name="ImpactRecordId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImpactId" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="StartDate" Type="int" />
+          <Property Name="EndDate" Type="int" />
+        </EntityType>
+        <EntityType Name="ImpactRecordBenificiaries">
+          <Key>
+            <PropertyRef Name="ImpactRecordBenificiariesId" />
+          </Key>
+          <Property Name="ImpactRecordBenificiariesId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImpactRecordId" Type="int" />
+          <Property Name="BenificiaryId" Type="int" />
+        </EntityType>
+        <Association Name="FK__ImpactRec__Benif__09DE7BCC">
+          <End Role="Benificiary" Type="SportScotlandDevModel.Store.Benificiary" Multiplicity="0..1" />
+          <End Role="ImpactRecordBenificiaries" Type="SportScotlandDevModel.Store.ImpactRecordBenificiaries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Benificiary">
+              <PropertyRef Name="BenificiaryId" />
+            </Principal>
+            <Dependent Role="ImpactRecordBenificiaries">
+              <PropertyRef Name="BenificiaryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ImpactRec__Impac__0AD2A005">
+          <End Role="ImpactRecord" Type="SportScotlandDevModel.Store.ImpactRecord" Multiplicity="0..1" />
+          <End Role="ImpactRecordBenificiaries" Type="SportScotlandDevModel.Store.ImpactRecordBenificiaries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImpactRecord">
+              <PropertyRef Name="ImpactRecordId" />
+            </Principal>
+            <Dependent Role="ImpactRecordBenificiaries">
+              <PropertyRef Name="ImpactRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Impact_ImpactId">
+          <End Role="Impact" Type="SportScotlandDevModel.Store.Impact" Multiplicity="0..1" />
+          <End Role="ImpactRecord" Type="SportScotlandDevModel.Store.ImpactRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Impact">
+              <PropertyRef Name="ImpactId" />
+            </Principal>
+            <Dependent Role="ImpactRecord">
+              <PropertyRef Name="ImpactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SportScotlandDevModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SportScotlandDevEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Benificiaries" EntityType="SportScotlandDevModel.Benificiary" />
+          <EntitySet Name="Impacts" EntityType="SportScotlandDevModel.Impact" />
+          <EntitySet Name="ImpactRecords" EntityType="SportScotlandDevModel.ImpactRecord" />
+          <EntitySet Name="ImpactRecordBenificiaries" EntityType="SportScotlandDevModel.ImpactRecordBenificiary" />
+          <AssociationSet Name="FK__ImpactRec__Benif__09DE7BCC" Association="SportScotlandDevModel.FK__ImpactRec__Benif__09DE7BCC">
+            <End Role="Benificiary" EntitySet="Benificiaries" />
+            <End Role="ImpactRecordBenificiary" EntitySet="ImpactRecordBenificiaries" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Impact_ImpactId" Association="SportScotlandDevModel.fk_Impact_ImpactId">
+            <End Role="Impact" EntitySet="Impacts" />
+            <End Role="ImpactRecord" EntitySet="ImpactRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ImpactRec__Impac__0AD2A005" Association="SportScotlandDevModel.FK__ImpactRec__Impac__0AD2A005">
+            <End Role="ImpactRecord" EntitySet="ImpactRecords" />
+            <End Role="ImpactRecordBenificiary" EntitySet="ImpactRecordBenificiaries" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Benificiary">
+          <Key>
+            <PropertyRef Name="BenificiaryId" />
+          </Key>
+          <Property Type="Int32" Name="BenificiaryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BenificiaryDescription" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ImpactRecordBenificiaries" Relationship="SportScotlandDevModel.FK__ImpactRec__Benif__09DE7BCC" FromRole="Benificiary" ToRole="ImpactRecordBenificiary" />
+        </EntityType>
+        <EntityType Name="Impact">
+          <Key>
+            <PropertyRef Name="ImpactId" />
+          </Key>
+          <Property Type="Int32" Name="ImpactId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImpactName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ImpactRecords" Relationship="SportScotlandDevModel.fk_Impact_ImpactId" FromRole="Impact" ToRole="ImpactRecord" />
+        </EntityType>
+        <EntityType Name="ImpactRecord">
+          <Key>
+            <PropertyRef Name="ImpactRecordId" />
+          </Key>
+          <Property Type="Int32" Name="ImpactRecordId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ImpactId" />
+          <Property Type="String" Name="Notes" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="StartDate" />
+          <Property Type="Int32" Name="EndDate" />
+          <NavigationProperty Name="Impact" Relationship="SportScotlandDevModel.fk_Impact_ImpactId" FromRole="ImpactRecord" ToRole="Impact" />
+          <NavigationProperty Name="ImpactRecordBenificiaries" Relationship="SportScotlandDevModel.FK__ImpactRec__Impac__0AD2A005" FromRole="ImpactRecord" ToRole="ImpactRecordBenificiary" />
+        </EntityType>
+        <EntityType Name="ImpactRecordBenificiary">
+          <Key>
+            <PropertyRef Name="ImpactRecordBenificiariesId" />
+          </Key>
+          <Property Type="Int32" Name="ImpactRecordBenificiariesId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ImpactRecordId" />
+          <Property Type="Int32" Name="BenificiaryId" />
+          <NavigationProperty Name="Benificiary" Relationship="SportScotlandDevModel.FK__ImpactRec__Benif__09DE7BCC" FromRole="ImpactRecordBenificiary" ToRole="Benificiary" />
+          <NavigationProperty Name="ImpactRecord" Relationship="SportScotlandDevModel.FK__ImpactRec__Impac__0AD2A005" FromRole="ImpactRecordBenificiary" ToRole="ImpactRecord" />
+        </EntityType>
+        <Association Name="FK__ImpactRec__Benif__09DE7BCC">
+          <End Type="SportScotlandDevModel.Benificiary" Role="Benificiary" Multiplicity="0..1" />
+          <End Type="SportScotlandDevModel.ImpactRecordBenificiary" Role="ImpactRecordBenificiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Benificiary">
+              <PropertyRef Name="BenificiaryId" />
+            </Principal>
+            <Dependent Role="ImpactRecordBenificiary">
+              <PropertyRef Name="BenificiaryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Impact_ImpactId">
+          <End Type="SportScotlandDevModel.Impact" Role="Impact" Multiplicity="0..1" />
+          <End Type="SportScotlandDevModel.ImpactRecord" Role="ImpactRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Impact">
+              <PropertyRef Name="ImpactId" />
+            </Principal>
+            <Dependent Role="ImpactRecord">
+              <PropertyRef Name="ImpactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ImpactRec__Impac__0AD2A005">
+          <End Type="SportScotlandDevModel.ImpactRecord" Role="ImpactRecord" Multiplicity="0..1" />
+          <End Type="SportScotlandDevModel.ImpactRecordBenificiary" Role="ImpactRecordBenificiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImpactRecord">
+              <PropertyRef Name="ImpactRecordId" />
+            </Principal>
+            <Dependent Role="ImpactRecordBenificiary">
+              <PropertyRef Name="ImpactRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SportScotlandDevModelStoreContainer" CdmEntityContainer="SportScotlandDevEntities">
+          <EntitySetMapping Name="Benificiaries">
+            <EntityTypeMapping TypeName="SportScotlandDevModel.Benificiary">
+              <MappingFragment StoreEntitySet="Benificiary">
+                <ScalarProperty Name="BenificiaryDescription" ColumnName="BenificiaryDescription" />
+                <ScalarProperty Name="BenificiaryId" ColumnName="BenificiaryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Impacts">
+            <EntityTypeMapping TypeName="SportScotlandDevModel.Impact">
+              <MappingFragment StoreEntitySet="Impact">
+                <ScalarProperty Name="ImpactName" ColumnName="ImpactName" />
+                <ScalarProperty Name="ImpactId" ColumnName="ImpactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImpactRecords">
+            <EntityTypeMapping TypeName="SportScotlandDevModel.ImpactRecord">
+              <MappingFragment StoreEntitySet="ImpactRecord">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ImpactId" ColumnName="ImpactId" />
+                <ScalarProperty Name="ImpactRecordId" ColumnName="ImpactRecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImpactRecordBenificiaries">
+            <EntityTypeMapping TypeName="SportScotlandDevModel.ImpactRecordBenificiary">
+              <MappingFragment StoreEntitySet="ImpactRecordBenificiaries">
+                <ScalarProperty Name="BenificiaryId" ColumnName="BenificiaryId" />
+                <ScalarProperty Name="ImpactRecordId" ColumnName="ImpactRecordId" />
+                <ScalarProperty Name="ImpactRecordBenificiariesId" ColumnName="ImpactRecordBenificiariesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

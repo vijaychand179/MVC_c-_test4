@@ -1,0 +1,30 @@
+﻿@model List<DL.SportScotland.Impact>
+
+@{
+    ViewBag.Title = "List view of Impacts";
+}
+
+<link href="~/Content/Css/Impact.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <b>@ViewBag.Title</b>
+        <div class="row row-lists">
+            <div class="col-sm-6">
+                <input type="button" class="btn btn-primary col-sm-1" value="Add" onclick="location.href='@Url.Action("AddImpact", "Impact")'" />
+                <span class="col-sm-5 top-padding">Create new impact</span>
+            </div>
+        </div>
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+                
+            <div class="row row-lists row-lists-bg">
+                <div class="col-sm-12">
+                    <span class="col-sm-11 top-padding left-padding">@Model[i].ImpactName </span>
+                    <input type="button" class="btn btn-primary col-sm-1" value="Edit" onclick="location.href='@Url.Action("AddImpact", new { id = @Model[i].ImpactId })'"/>
+
+                </div>
+            </div>
+        }
+    </div>
+}

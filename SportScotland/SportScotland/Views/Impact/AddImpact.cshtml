@@ -1,0 +1,28 @@
+﻿@model DL.SportScotland.Impact
+
+@{
+    if (Model.ImpactId == 0)
+    {
+        ViewBag.Title = "Add Impact";
+    }
+    else
+    {
+        ViewBag.Title = "Edit Impact";
+    }    
+}
+<link href="~/Content/Css/Impact.css" rel="stylesheet" />
+<script src="~/Scripts/Impact/impact.js"></script>
+@using (Html.BeginForm("SaveImpact", "Impact", FormMethod.Post))
+{
+    <div class="container">
+        <b>@ViewBag.Title</b>
+        <div class="row row-lists">
+            <span>Impact: </span>
+            @Html.TextBoxFor(x => x.ImpactName, new { id = "txtImpactName" })
+            @Html.HiddenFor(x => x.ImpactId)
+        </div>
+        <div class="row row-lists">
+            <input type="submit" class="btn btn-primary" onclick="return validateImpact();" />
+        </div>
+    </div>
+}

@@ -1,0 +1,58 @@
+﻿@{
+ 
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Impact Record</title>
+    <link href="~/Content/Css/ImpactRecord.css" rel="stylesheet" />
+    <script src="~/Scripts/IndividualImpact/IndividuaImpactCtrl.js"></script>
+</head>
+<body ng-app="app" ng-controller="impactRecordController">
+    <div class="container">
+        <b>Opportunities/General/Creating new opportunities to participate</b>
+        <div class="row row-lists">
+            <div class="col-sm-2"><b>Impact:</b></div>
+            <select class="col-sm-10" ng-options="models.ImpactId as models.ImpactName for models in model.Impacts" ng-model="model.ImpactId" ng-change="update(model.ImpactId);">
+            </select>
+        </div>
+        <div class="row row-lists">
+            <div ng-show="model.ImpactId==0">
+                <div class="col-sm-4"><b>If 'Other' please provide details:</b></div>
+                <input class="col-sm-8" ng-model="model.Others" placeholder="Other if not in the list" />
+            </div>
+        </div>
+        <div class="row row-lists row-lists-bg">
+            <div class="col-sm-3"><b>More details/notes:</b></div>
+            <textarea class="col-sm-9" rows="5" cols="10" ng-model="model.ImpactRecord.Notes"
+                placeholder="Please use this section to describe the impact/intervention you have selected in more detail."></textarea>
+        </div>
+        <div class="row row-lists">
+            <div class="col-sm-2 row-lists-bg"><b>Start Date:</b></div>
+            <select class="col-sm-2" ng-options="startDate for startDate in startDateList" ng-model="model.ImpactRecord.StartDate"></select>
+            <div class="col-sm-2 row-lists-bg"><b>Finish Date:</b></div>
+            <select class="col-sm-2" ng-options="endDate for endDate in endDateList" ng-model="model.ImpactRecord.EndDate"></select>
+        </div>
+        <div class="row row-lists">
+            <div class="col-sm-4 row-lists-bg"><b>Beneficiary group (if applicable):</b></div>
+            <select class="col-sm-4" ng-options="models.BenificiaryId as models.BenificiaryDescription for models in model.Benificiaries" ng-model="model.BenificiaryId"></select>
+            <button type="button" class="col-sm-1 col-sm-offset-1 btn btn-primary" value="Add" ng-click="add(model.BenificiaryId)">Add</button>
+        </div>
+        <div class="row row-lists">
+            <div class="col-sm-9">
+                <table class="table-bordered table-width">
+                    <tr ng-repeat="Benificiary in model.AddedBenificiaries">
+                        <td>{{Benificiary.BenificiaryDescription}}
+                        </td>
+                        <td>
+                            <a href="" ng-click="remove(Benificiary.BenificiaryId)">Remove</a>
+                        </td>
+                </table>
+            </div>
+            <button type="button" class="col-sm-1 col-sm-offset-2 btn btn-primary" ng-style="{'margin-top': marginTop}" value="Save" ng-click="save();">Save</button>
+        </div>
+    </div>
+</body>
+</html>

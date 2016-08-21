@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SportScotlandDevModelStoreContainer" CdmEntityContainer="SportScotlandDevEntities">
+    <EntitySetMapping Name="Benificiaries">
+      <EntityTypeMapping TypeName="SportScotlandDevModel.Benificiary">
+        <MappingFragment StoreEntitySet="Benificiary">
+          <ScalarProperty Name="BenificiaryDescription" ColumnName="BenificiaryDescription" />
+          <ScalarProperty Name="BenificiaryId" ColumnName="BenificiaryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Impacts">
+      <EntityTypeMapping TypeName="SportScotlandDevModel.Impact">
+        <MappingFragment StoreEntitySet="Impact">
+          <ScalarProperty Name="ImpactName" ColumnName="ImpactName" />
+          <ScalarProperty Name="ImpactId" ColumnName="ImpactId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImpactRecords">
+      <EntityTypeMapping TypeName="SportScotlandDevModel.ImpactRecord">
+        <MappingFragment StoreEntitySet="ImpactRecord">
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ImpactId" ColumnName="ImpactId" />
+          <ScalarProperty Name="ImpactRecordId" ColumnName="ImpactRecordId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImpactRecordBenificiaries">
+      <EntityTypeMapping TypeName="SportScotlandDevModel.ImpactRecordBenificiary">
+        <MappingFragment StoreEntitySet="ImpactRecordBenificiaries">
+          <ScalarProperty Name="BenificiaryId" ColumnName="BenificiaryId" />
+          <ScalarProperty Name="ImpactRecordId" ColumnName="ImpactRecordId" />
+          <ScalarProperty Name="ImpactRecordBenificiariesId" ColumnName="ImpactRecordBenificiariesId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

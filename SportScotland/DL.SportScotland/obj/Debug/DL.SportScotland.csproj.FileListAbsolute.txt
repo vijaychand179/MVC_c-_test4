@@ -1,0 +1,8 @@
+D:\projects\SportScotland\DL.SportScotland\bin\Debug\DL.SportScotland.dll.config
+D:\projects\SportScotland\DL.SportScotland\bin\Debug\DL.SportScotland.dll
+D:\projects\SportScotland\DL.SportScotland\bin\Debug\DL.SportScotland.pdb
+D:\projects\SportScotland\DL.SportScotland\bin\Debug\EntityFramework.dll
+D:\projects\SportScotland\DL.SportScotland\bin\Debug\EntityFramework.xml
+D:\projects\SportScotland\DL.SportScotland\obj\Debug\DL.SportScotland.dll
+D:\projects\SportScotland\DL.SportScotland\obj\Debug\DL.SportScotland.pdb
+D:\projects\SportScotland\DL.SportScotland\obj\Debug\DL.SportScotland.csprojResolveAssemblyReference.cache

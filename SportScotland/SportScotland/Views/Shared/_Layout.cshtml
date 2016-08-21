@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - SportScotland</title>
+    @Styles.Render("~/Content/Bootstrap/css")
+    @Scripts.Render("~/bundles/angular")
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <span class="navbar-brand">SportScotland</span>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Impacts List", "GetAllImpacts", "Impact")</li>
+                    <li>@Html.ActionLink("Impact Records", "LoadImpactRecord", "ImpactRecord")</li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="body">
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    @*<footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - SportScotalnd</p>
+                </div>
+            </div>
+        </footer>*@
+</body>
+</html>
